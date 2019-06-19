@@ -1,0 +1,29 @@
+.App {
+  text-align: center;
+}
+
+h1 {
+  margin: 2%;
+  font-size: 1.4rem;
+}
+
+form {
+  margin: 0;
+}
+
+input {
+  padding: 0.25%;
+  width: 12.5%;
+}
+
+input::placeholder {
+  text-align: center;
+  color: rgb(138, 180, 194);
+}
+
+.todoList {
+  font-size: 1.2rem;
+  text-align: left;
+  width: 25%;
+  margin: auto;
+}
