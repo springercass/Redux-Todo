@@ -1,21 +1,13 @@
-const todos = (state = [], action) => {
+import { NEW_TODO, TOGGLE_COMPLETE } from "../actions";
+
+export default (todos = [], action) => {
   switch (action.type) {
-    case "ADD_TODO":
-      return [
-        ...state,
-        {
-          id: action.id,
-          text: action.text,
-          completed: false
-        }
-      ];
-    case "TOGGLE_TODO":
-      return state.map(todo =>
-        todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
-      );
+    case NEW_TODO:
+      return todos.concat(action.payload);
+    case TOGGLE_COMPLETE:
+      todos[action.payload].complete = !todos[action.payload].complete;
+      return todos;
     default:
-      return state;
+      return todos;
   }
 };
-
-export default todos;

@@ -1,21 +1,24 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { Component } from "react";
+import { toggleComplete } from "../actions";
+import { connect } from "react-redux";
+import "../App.css";
 
-const Todo = ({ onClick, completed, text }) => (
-  <li
-    onClick={onClick}
-    style={{
-      textDecoration: completed ? "line-through" : "none"
-    }}
-  >
-    {text}
-  </li>
-);
+class Todo extends Component {
+  toggleComplete(event) {
+    this.props.toggleComplete(this.props.index);
+  }
 
-Todo.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  completed: PropTypes.bool.isRequired,
-  text: PropTypes.string.isRequired
-};
+  render() {
+    return (
+      <p className="todoList">
+        <input type="checkbox" onChange={this.toggleComplete.bind(this)} />
+        {this.props.todo.value}
+      </p>
+    );
+  }
+}
 
-export default Todo;
+export default connect(
+  null,
+  { toggleComplete }
+)(Todo);
